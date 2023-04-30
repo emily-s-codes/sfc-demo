@@ -1,9 +1,11 @@
 .App {
   text-align: center;
+  max-width: 80%;
+  margin: 0 auto;
 }
 
 .data-display {
-  margin: 0 50px;
+  margin: 0 50px 50px 50px;
   display: grid;
   gap: 50px;
   grid-template-columns: repeat(3, 1fr);
@@ -13,6 +15,10 @@
 .data-display button {
   width: 200px;
   margin: 0 auto;
+}
+
+.small-display {
+  display: none;
 }
 
 .arrow {
@@ -25,4 +31,18 @@
 
 .funEx {
   grid-area: ex;
+}
+
+@media only screen and (max-width: 992px) {
+  .data-display {
+    display: none;
+  }
+
+  .small-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 50px;
+  }
 }

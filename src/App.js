@@ -354,6 +354,8 @@ function App() {
     }
   ]
 
+  const fakeContactsSmall = fakeContacts.slice(0, 3)
+
   return (
     <main className="App">
       <h1>Hey Patrick</h1>
@@ -361,6 +363,8 @@ function App() {
       <p>I prefer arrow function syntax for whatever reason so I use the Emmet shortcut 'sfc' (for 'stateless function component').</p>
       <p>The states determining which lists are displayed are housed in the parent element and toggled with the button clicks.</p>
       <p>The states that change the styling of each contact on click are housed in the child elements.</p>
+
+      {/* FOR DESKTOP */}
       <section className='data-display'>
         <button type='button' onClick={() => setArrow(!arrow)}>Arrow Function</button>
         <button type='button' onClick={() => setFunDec(!funDec)}>Function Declaration</button>
@@ -382,9 +386,29 @@ function App() {
             return <FunctionExpression key={key} data={contact} />
           })}
         </div>}
-
       </section>
 
+      {/* SMALLER THAN DESKTOP */}
+      <section className='small-display'>
+        <button type='button' onClick={() => setArrow(!arrow)}>Arrow Function</button>
+        {arrow && <div className='arrow'>
+          {fakeContactsSmall.map((contact, key) => {
+            return <Arrow key={key} data={contact} />
+          })}
+        </div>}
+        <button type='button' onClick={() => setFunDec(!funDec)}>Function Declaration</button>
+        {funDec && <div className='funDec'>
+          {fakeContactsSmall.map((contact, key) => {
+            return <FunctionDeclaration key={key} data={contact} />
+          })}
+        </div>}
+        <button type='button' onClick={() => setFunEx(!funEx)}>Function Expression</button>
+        {funEx && <div className='funEx'>
+          {fakeContactsSmall.map((contact, key) => {
+            return <FunctionExpression key={key} data={contact} />
+          })}
+        </div>}
+      </section>
 
     </main>
   );
